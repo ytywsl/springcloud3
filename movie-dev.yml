@@ -1,0 +1,33 @@
+#声明电影微服务
+server:
+  port: 8001
+spring:
+  application:
+    name: microservice-movie
+
+
+#配置Eureka客户端
+eureka:
+  #注册时,优先使用ip
+  instance:
+    prefer-ip-address: true
+
+  client:
+    #user微服务模块是否向eureka服务器注册
+    register-with-eureka: true
+    #向eureka服务器索要信息
+    fetch-registry: true
+    #服务的访问地址
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka,http://127.0.0.1:9999/eureka
+
+    #服务的消费方每30秒需要获得服务器的更新信息(例如:服务的消费方式'电影购票微服务')
+    #向Eureka服务器索要服务的时间间隔,默认是30秒
+    registry-fetch-interval-seconds: 30
+
+#启动熔断机制
+feign:
+  hystrix:
+    enabled: true
+
+

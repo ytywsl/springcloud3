@@ -1,0 +1,42 @@
+#声明user微服务
+server:
+  port: 9001
+spring:
+  application:
+    name: microservice-user
+  #数据源,访问的数据库是jsd20127
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.111.29:3306/jsd20127?characterEncoding=utf8
+    username: root
+    password: 123456
+
+  #使用正向工程
+  jpa:
+    show-sql: true
+    #表明由JavaBean生成表
+    generate-ddl: true
+    #底层数据库的类型是mysql
+    database: mysql
+#配置Eureka客户端
+eureka:
+  #注册时,优先使用ip
+  instance:
+    prefer-ip-address: true
+
+    #如下2项指标通常设置在服务的提供方(例如:用户微服务是服务的提供方)
+    #续约的最小间隔是30秒(心跳)
+    lease-renewal-interval-in-seconds: 10
+    #租赁到期的时间,默认是90秒
+    lease-expiration-duration-in-seconds: 30
+
+  client:
+    #user微服务模块是否向eureka服务器注册
+    register-with-eureka: true
+    #向eureka服务器索要信息
+    fetch-registry: true
+    #服务的访问地址
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka,http://127.0.0.1:9999/eureka
+
+
