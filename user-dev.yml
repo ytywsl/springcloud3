@@ -1,13 +1,13 @@
 #声明user微服务
 server:
-  port: 9001
+  port: 9002
 spring:
   application:
     name: microservice-user
   #数据源,访问的数据库是jsd20127
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.111.29:3306/jsd20127?characterEncoding=utf8
+    url: jdbc:mysql://192.168.111.29:3307/jsd20127?characterEncoding=utf8
     username: root
     password: 123456
 
